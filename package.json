@@ -5,7 +5,9 @@
     "watch": "webpack --config webpack.config.js --watch"
   },
   "dependencies": {
-    "antd": "^3.2.0"
+    "antd": "^3.2.0",
+    "less": "^2.7.3",
+    "scss-to-json": "^2.0.0"
   },
   "peerDependencies": {
     "less-loader": "^4.0.5",
