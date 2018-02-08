@@ -39,8 +39,8 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
 /**
  * Read variables from a scss theme file into a less-formatted dictionary.
  */
-export const loadScssThemeAsLess = (filePath) => {
-  const rawTheme = scssToJson(filePath);
+export const loadScssThemeAsLess = (themeScssPath) => {
+  const rawTheme = scssToJson(themeScssPath);
   const theme = {};
   Object.keys(rawTheme).forEach((sassVariableName) => {
     const lessVariableName = sassVariableName.replace(/^\$/, '@');
