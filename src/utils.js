@@ -38,6 +38,8 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
 
 /**
  * Read variables from a scss theme file into a less-formatted dictionary.
+ * @param  {string} themeScssPath - Path to scss file containing only scss variables.
+ * @return {Object} Object of the form { '@variable': 'value' }.
  */
 export const loadScssThemeAsLess = (themeScssPath) => {
   const rawTheme = scssToJson(themeScssPath);
