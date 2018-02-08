@@ -1,4 +1,4 @@
-const scssToJson = require('scss-to-json');
+import scssToJson from 'scss-to-json';
 
 
 /**
