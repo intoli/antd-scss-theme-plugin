@@ -78,4 +78,4 @@ class ExtractVariablesPlugin {
 }
 
 
-module.exports = ExtractVariablesPlugin;
+export default ExtractVariablesPlugin;
