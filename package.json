@@ -7,6 +7,10 @@
   "dependencies": {
     "antd": "^3.2.0"
   },
+  "peerDependencies": {
+    "less-loader": "^4.0.5",
+    "sass-loader": "^6.0.6"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
