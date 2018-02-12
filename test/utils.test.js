@@ -25,6 +25,7 @@ describe('extractLessVariables', () => {
     expect(extractedVariables).toEqual({
       'test-color': '#f00',
       'computed-test-color': '#0f0',
+      'test-url': '"http://localhost/image.png"',
     });
   });
 
@@ -38,6 +39,7 @@ describe('extractLessVariables', () => {
     expect(extractedVariables).toEqual({
       'test-color': '#f00',
       'computed-test-color': '#00f',
+      'test-url': '"http://localhost/image.png"',
     });
   });
 });
