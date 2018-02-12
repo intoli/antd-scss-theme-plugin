@@ -1,7 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import { extractLessVariables } from '../src/utils.js';
+import {
+  extractLessVariables,
+  loadScssThemeAsLess,
+} from '../src/utils.js';
 
 
 describe('Ant Design\'s theme file', () => {
@@ -35,4 +38,15 @@ describe('extractLessVariables', () => {
       'computed-test-color': '#00f',
     });
   });
+});
+
+describe('loadScssThemeAsLess', () => {
+  it ('should correctly extract variables', () => {
+    const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
+    const variables = loadScssThemeAsLess(scssThemePath);;
+    expect(variables).toEqual({
+      '@primary-color': '#f00',
+      '@info-color': '#200',
+    });
+  })
 });
