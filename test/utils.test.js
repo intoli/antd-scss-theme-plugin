@@ -15,6 +15,7 @@ describe('Ant Design\'s theme file', () => {
   });
 });
 
+
 describe('extractLessVariables', () => {
   it('should correctly extract computed variables', async () => {
     const extractedVariables = await extractLessVariables(
@@ -39,6 +40,7 @@ describe('extractLessVariables', () => {
     });
   });
 });
+
 
 describe('loadScssThemeAsLess', () => {
   it ('should correctly extract variables', () => {
