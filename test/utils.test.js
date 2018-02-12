@@ -1,4 +1,7 @@
 import fs from 'fs';
+import path from 'path';
+
+import { extractLessVariables } from '../src/utils.js';
 
 
 describe('Ant Design\'s theme file', () => {
@@ -8,3 +11,17 @@ describe('Ant Design\'s theme file', () => {
     expect(themeExists).toBe(true);
   });
 });
+
+describe('extractLessVariables', () => {
+  it('should correctly extract computed variables', async () => {
+    const extractedVariables = await extractLessVariables(
+      path.resolve(__dirname, 'data/test.less')
+    );
+    console.log(extractLessVariables);
+    expect(extractedVariables).toEqual({
+      'test-color': '#f00',
+      'computed-test-color': '#0f0',
+    });
+  });
+});
+
