@@ -17,11 +17,9 @@ describe('extractLessVariables', () => {
     const extractedVariables = await extractLessVariables(
       path.resolve(__dirname, 'data/test.less')
     );
-    console.log(extractLessVariables);
     expect(extractedVariables).toEqual({
       'test-color': '#f00',
       'computed-test-color': '#0f0',
     });
   });
 });
-
