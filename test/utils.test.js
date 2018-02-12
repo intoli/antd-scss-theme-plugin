@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import {
+  compileThemeVariables,
   extractLessVariables,
   loadScssThemeAsLess,
 } from '../src/utils.js';
@@ -51,4 +52,14 @@ describe('loadScssThemeAsLess', () => {
       '@info-color': '#200',
     });
   })
+});
+
+
+describe('compileThemeVariables', () => {
+  it('should produce the expected number of variables', async () => {
+    const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
+    const output = await compileThemeVariables(scssThemePath);
+    const variableCount = output.split('\n').filter(line => line.startsWith('$')).length;
+    expect(variableCount).toBe(429);
+  });
 });
