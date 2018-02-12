@@ -43,7 +43,7 @@ describe('extractLessVariables', () => {
 
 
 describe('loadScssThemeAsLess', () => {
-  it ('should correctly extract variables', () => {
+  it('should correctly extract variables', () => {
     const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
     const variables = loadScssThemeAsLess(scssThemePath);;
     expect(variables).toEqual({
