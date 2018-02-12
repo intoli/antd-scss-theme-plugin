@@ -2,6 +2,7 @@
   "name": "antd-scss-theme-plugin",
   "license": "BSD-2-Clause",
   "scripts": {
+    "test": "jest --watch",
     "watch": "webpack --config webpack.config.js --watch"
   },
   "dependencies": {
