@@ -8,8 +8,8 @@ import ExtractVariablesPlugin from './extractVariablesLessPlugin';
 
 /**
  * Return values of compiled LESS variables from a compilable entry point.
- * @param  {string} lessEntryPath - Root LESS file from which to extract variables.
- * @param  {Object} variableOverrides - Variable overrides of the form { '@var': 'value' } to use
+ * @param {string} lessEntryPath - Root LESS file from which to extract variables.
+ * @param {Object} variableOverrides - Variable overrides of the form { '@var': 'value' } to use
  *   during compilation.
  * @return {Object} Object of the form { 'variable': 'value' }.
  */
@@ -38,7 +38,7 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
 
 /**
  * Read variables from a scss theme file into a less-formatted dictionary.
- * @param  {string} themeScssPath - Path to scss file containing only scss variables.
+ * @param {string} themeScssPath - Path to scss file containing only scss variables.
  * @return {Object} Object of the form { '@variable': 'value' }.
  */
 export const loadScssThemeAsLess = (themeScssPath) => {
@@ -54,9 +54,9 @@ export const loadScssThemeAsLess = (themeScssPath) => {
 
 /**
  * Use scss theme file to seed a full set of Ant Design's theme variables returned in scss.
- * @param  {string} themeScssPath - Path to scss file containing scss variables meaningful to Ant
+ * @param {string} themeScssPath - Path to scss file containing scss variables meaningful to Ant
  *   Design.
- * @return {string}  A string representing an scss file containing all the theme and color
+ * @return {string} A string representing an scss file containing all the theme and color
  *   variables used in Ant Design.
  */
 export const compileThemeVariables = (themeScssPath) => {
