@@ -1,8 +1,11 @@
 import path from 'path';
 
-import { urlToRequest } from 'loader-utils';
+import { getOptions, urlToRequest } from 'loader-utils';
+import sassLoader from 'sass-loader';
 import importsToResolve from 'sass-loader/lib/importsToResolve';
 
+import AntdScssThemePlugin from './index';
+import { getScssThemePath } from './loaderUtils';
 import {
   extractLessVariables,
   compileThemeVariables,
@@ -29,3 +32,34 @@ export const themeImporter = themeScssPath => (url, previousResolve, done) => {
   }
   done();
 };
+
+
+export const overloadSassLoaderOptions = (options) => {
+  const scssThemePath = getScssThemePath(options);
+
+  let importer;
+  const extraImporter = themeImporter(scssThemePath);
+  if ('importer' in options) {
+    if (Array.isArray(options.importer)) {
+      importer = [...options.importer, extraImporter];
+    } else {
+      importer = [options.importer, extraImporter];
+    }
+  } else {
+    importer = extraImporter;
+  }
+
+  options.importer = importer;
+  return options;
+};
+
+
+export default function antdSassLoader(...args) {
+  const loaderContext = this;
+  const options = getOptions(loaderContext);
+  const scssThemePath = getScssThemePath(options);
+
+  loaderContext.addDependency(scssThemePath);
+
+  return sassLoader.call(loaderContext, ...args);
+}
