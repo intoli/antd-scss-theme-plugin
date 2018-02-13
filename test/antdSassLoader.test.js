@@ -64,3 +64,33 @@ describe('overloadSassLoaderOptions', () => {
     }).toThrow(/scss theme file must be specified/);
   });
 });
+
+
+describe('antdSassLoader', () => {
+  it('enables importing theme variables in scss processed with sass-loader', (done) => {
+    const config = {
+      entry: path.resolve(__dirname, 'data/test.scss'),
+      output: {
+        path: path.join(__dirname, 'output'),
+        filename: 'antdSassLoader.bundle.js',
+      },
+      module: {
+        rules: [
+          {
+            test: /\.scss$/,
+            use: [
+              'raw-loader',
+              AntdScssThemePlugin.themify({
+                loader: 'sass-loader',
+                options: {
+                  scssThemePath: path.resolve(__dirname, 'data/theme.scss'),
+                },
+              }),
+            ],
+          },
+        ],
+      },
+    };
+    compileWebpack(config, done);
+  });
+});
