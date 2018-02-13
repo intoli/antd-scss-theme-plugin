@@ -28,6 +28,7 @@
     "eslint-plugin-react": "^7.6.1",
     "jest": "^22.2.1",
     "node-sass": "^4.7.2",
+    "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
     "webpack": "^3.10.0"
   }
