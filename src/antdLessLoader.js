@@ -3,7 +3,7 @@ import { getScssThemePath } from './loaderUtils';
 
 
 /**
- * Add or rewrite less-loader's modifyVars option to include variables loaded from theme.
+ * Add or rewrite less-loader's modifyVars option with scss theme's variable customizations.
  * @param {Object} options - Options for less-loader.
  * @return {Objects} Options modified to include theme variables in the modifyVars property.
  */
