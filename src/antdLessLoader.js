@@ -10,13 +10,14 @@ import { getScssThemePath } from './loaderUtils';
 export const overloadLessLoaderOptions = (options) => {
   const scssThemePath = getScssThemePath(options);
 
-  const themeModifyVars = loadScssThemeAsLess(scssThemePath)
-  const modifyVars = options.modifyVars || {};
-
-  options.modifyVars = {
-    ...themeModifyVars,
-    ...modifyVars,
+  const themeModifyVars = loadScssThemeAsLess(scssThemePath);
+  const newOptions = {
+    ...options,
+    modifyVars: {
+      ...themeModifyVars,
+      ...(options.modifyVars || {}),
+    },
   };
 
-  return options;
+  return newOptions;
 };
