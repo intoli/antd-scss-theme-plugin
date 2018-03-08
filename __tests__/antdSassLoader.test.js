@@ -73,7 +73,7 @@ describe('antdSassLoader', () => {
   afterAll(() => {
     rimraf(path.join(outputPath, '**'), (error) => {
       if (error) {
-        console.error(error);
+        throw error;
       }
     });
   });
