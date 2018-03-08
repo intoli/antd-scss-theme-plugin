@@ -30,9 +30,6 @@ const developmentOptions = {
   },
   target: 'node',
   devtool: 'cheap-module-source-map',
-  node: {
-    __dirname: true,
-  },
 };
 
 
