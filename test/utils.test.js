@@ -20,7 +20,7 @@ describe('Ant Design\'s theme file', () => {
 describe('extractLessVariables', () => {
   it('should correctly extract computed variables', async () => {
     const extractedVariables = await extractLessVariables(
-      path.resolve(__dirname, 'data/test.less')
+      path.join(__dirname, 'data', 'test.less'),
     );
     expect(extractedVariables).toEqual({
       'test-color': '#f00',
@@ -31,7 +31,7 @@ describe('extractLessVariables', () => {
 
   it('should properly overload variables', async () => {
     const extractedVariables = await extractLessVariables(
-      path.resolve(__dirname, 'data/test.less'),
+      path.resolve(__dirname, 'data', 'test.less'),
       {
         'computed-test-color': '#00f',
       },
@@ -47,19 +47,19 @@ describe('extractLessVariables', () => {
 
 describe('loadScssThemeAsLess', () => {
   it('should correctly extract variables', () => {
-    const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
-    const variables = loadScssThemeAsLess(scssThemePath);;
+    const scssThemePath = path.join(__dirname, 'data', 'theme.scss');
+    const variables = loadScssThemeAsLess(scssThemePath);
     expect(variables).toEqual({
       '@primary-color': '#f00',
       '@info-color': '#200',
     });
-  })
+  });
 });
 
 
 describe('compileThemeVariables', () => {
   it('should produce the expected number of variables', async () => {
-    const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
+    const scssThemePath = path.join(__dirname, 'data', 'theme.scss');
     const output = await compileThemeVariables(scssThemePath);
     const variableCount = output.split('\n').filter(line => line.startsWith('$')).length;
     expect(variableCount).toBe(429);
