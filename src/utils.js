@@ -21,6 +21,7 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
         lessEntry,
         {
           filename: lessEntryPath,
+          javascriptEnabled: true,
           modifyVars: variableOverrides,
           plugins: [
             new ExtractVariablesPlugin({
