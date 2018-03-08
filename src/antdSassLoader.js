@@ -4,10 +4,8 @@ import { getOptions, urlToRequest } from 'loader-utils';
 import sassLoader from 'sass-loader';
 import importsToResolve from 'sass-loader/lib/importsToResolve';
 
-import AntdScssThemePlugin from './index';
 import { getScssThemePath } from './loaderUtils';
 import {
-  extractLessVariables,
   compileThemeVariables,
 } from './utils';
 
