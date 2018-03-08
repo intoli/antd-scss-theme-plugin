@@ -12,5 +12,8 @@
         "config": "./webpack.config.js"
       }
     }
+  },
+  "rules": {
+    "function-paren-newline": "off"
   }
 }
