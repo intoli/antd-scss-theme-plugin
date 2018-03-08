@@ -10,6 +10,10 @@ const developmentOptions = {
   entry: path.join(__dirname, 'src', 'index.js'),
   externals: [
     nodeExternals(),
+    'antd',
+    'less',
+    'less-loader',
+    'sass-loader',
   ],
   module: {
     rules: [
