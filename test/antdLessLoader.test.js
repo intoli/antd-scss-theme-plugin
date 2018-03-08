@@ -19,7 +19,7 @@ describe('overloadLessLoaderOptions', () => {
       scssThemePath: path.resolve(__dirname, 'data/theme.scss'),
       modifyVars: {
         '@primary-color': '#fff',
-      }
+      },
     });
     expect(overloadedOptions.modifyVars).toEqual({
       '@primary-color': '#fff',
