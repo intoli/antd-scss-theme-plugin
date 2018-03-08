@@ -1,8 +1,13 @@
 const path = require('path');
 
+const nodeExternals = require('webpack-node-externals');
+
 
 const developmentOptions = {
   entry: path.join(__dirname, 'src', 'index.js'),
+  externals: [
+    nodeExternals(),
+  ],
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
