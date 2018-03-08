@@ -4,15 +4,11 @@ const nodeExternals = require('webpack-node-externals');
 
 
 const developmentOptions = {
+  devtool: 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   externals: [
     nodeExternals(),
   ],
-  output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    libraryTarget: 'commonjs',
-  },
   module: {
     rules: [
       {
@@ -28,8 +24,12 @@ const developmentOptions = {
       },
     ],
   },
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js',
+    libraryTarget: 'commonjs',
+  },
   target: 'node',
-  devtool: 'cheap-module-source-map',
 };
 
 
