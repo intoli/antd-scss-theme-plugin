@@ -3,7 +3,7 @@ import path from 'path';
 import sass from 'node-sass';
 
 import compileWebpack from './utils';
-import antdSassLoader, {
+import {
   themeImporter,
   overloadSassLoaderOptions,
 } from '../src/antdSassLoader';
@@ -17,7 +17,7 @@ describe('themeImporter', () => {
       file: path.resolve(__dirname, 'data/test.scss'),
       importer: themeImporter(themePath),
     }, (error, result) => {
-      const compiledColor = result.css.toString().match(/background: (.*);/)[1]
+      const compiledColor = result.css.toString().match(/background: (.*);/)[1];
       expect(compiledColor).toBe('#faad14');
       done();
     });
@@ -26,7 +26,7 @@ describe('themeImporter', () => {
 
 
 describe('overloadSassLoaderOptions', () => {
-  const importer = (url, previous, done) => { done(); };
+  const mockImporter = (url, previous, done) => { done(); };
   const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
 
   it('adds an extra when given no importers', () => {
@@ -37,8 +37,8 @@ describe('overloadSassLoaderOptions', () => {
   });
 
   [
-    ['existing importer', importer],
-    ['existing importer array', [importer]],
+    ['existing importer', mockImporter],
+    ['existing importer array', [mockImporter]],
   ].forEach(([description, importer]) => {
     it(`adds an importer when given an ${description}`, () => {
       const overloadedOptions = overloadSassLoaderOptions({
@@ -52,6 +52,7 @@ describe('overloadSassLoaderOptions', () => {
   });
 
   it('uses scss theme path from plugin when not given one through options', () => {
+    // eslint-disable-next-line no-unused-vars
     const plugin = new AntdScssThemePlugin(scssThemePath);
     const overloadedOptions = overloadSassLoaderOptions({});
     expect(typeof overloadedOptions.importer).toBe('function');
