@@ -34,6 +34,7 @@
     "less-loader": "^4.0.5",
     "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.7",
     "webpack": "^3.10.0",
     "webpack-node-externals": "^1.6.0"
