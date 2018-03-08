@@ -33,10 +33,12 @@ export const themeImporter = themeScssPath => (url, previousResolve, done) => {
 
 
 export const overloadSassLoaderOptions = (options) => {
+  const newOptions = { ...options };
   const scssThemePath = getScssThemePath(options);
 
   let importer;
   const extraImporter = themeImporter(scssThemePath);
+
   if ('importer' in options) {
     if (Array.isArray(options.importer)) {
       importer = [...options.importer, extraImporter];
@@ -47,8 +49,9 @@ export const overloadSassLoaderOptions = (options) => {
     importer = extraImporter;
   }
 
-  options.importer = importer;
-  return options;
+  newOptions.importer = importer;
+
+  return newOptions;
 };
 
 
