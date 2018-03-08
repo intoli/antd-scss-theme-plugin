@@ -1,11 +1,35 @@
 {
   "name": "antd-scss-theme-plugin",
-  "license": "BSD-2-Clause",
+  "description": "A webpack plugin which enables importing and customizing Ant Design's theme variables from scss.",
+  "version": "0.0.1",
+  "main": "build/antd-scss-theme-plugin.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "test": "jest --watch",
     "watch": "webpack --config webpack.config.js --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prncc/antd-scss-theme-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "live-reload",
+    "ant-design",
+    "less",
+    "sass",
+    "scss",
+    "less-loader",
+    "sass-loader",
+    "styles"
+  ],
+  "author": "Andre Perunicic",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/prncc/antd-scss-theme-plugin/issues"
+  },
+  "homepage": "https://github.com/prncc/antd-scss-theme-plugin",
   "dependencies": {
     "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
