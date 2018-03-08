@@ -3,7 +3,7 @@ import path from 'path';
 import sass from 'node-sass';
 import rimraf from 'rimraf';
 
-import compileWebpack from '../src/testUtils';
+import compileWebpack from '../misc/testUtils';
 import {
   themeImporter,
   overloadSassLoaderOptions,
