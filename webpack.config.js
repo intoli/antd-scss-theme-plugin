@@ -2,6 +2,8 @@ const path = require('path');
 
 const nodeExternals = require('webpack-node-externals');
 
+const packageJson = require('./package.json');
+
 
 const developmentOptions = {
   devtool: 'cheap-module-source-map',
@@ -26,7 +28,8 @@ const developmentOptions = {
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
+    filename: `${packageJson.name}.js`,
+    library: 'AntdScssThemePlugin',
     libraryTarget: 'commonjs',
   },
   target: 'node',
