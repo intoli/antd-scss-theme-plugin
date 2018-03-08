@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import webpack from 'webpack';
 
 
@@ -6,7 +7,8 @@ import webpack from 'webpack';
  * @param {Object} config - A webpack configuration object.
  * @param {function} done - jest's done callback that is called when compilation completes.
  */
-const compileWebpack = (config, done) => {
+// eslint-disable-next-line import/prefer-default-export
+export const compileWebpack = (config, done) => {
   webpack(config, (compilerError, stats) => {
     const error = compilerError || (stats.hasErrors() && stats.compilation.errors[0]);
     if (error) {
@@ -17,6 +19,3 @@ const compileWebpack = (config, done) => {
     }
   });
 };
-
-
-export default compileWebpack;
