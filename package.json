@@ -6,15 +6,17 @@
     "watch": "webpack --config webpack.config.js --watch"
   },
   "dependencies": {
-    "antd": "^3.2.0",
-    "less": "^2.7.3",
+    "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
   },
   "peerDependencies": {
+    "antd": "^3.2.0",
+    "less": "^2.3.7",
     "less-loader": "^4.0.5",
     "sass-loader": "^6.0.6"
   },
   "devDependencies": {
+    "antd": "^3.2.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
@@ -27,9 +29,12 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
     "jest": "^22.2.1",
+    "less": "^2.3.7",
+    "less-loader": "^4.0.5",
     "node-sass": "^4.7.2",
     "raw-loader": "^0.5.1",
-    "sass-loader": "^6.0.6",
-    "webpack": "^3.10.0"
+    "sass-loader": "^6.0.7",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
   }
 }
