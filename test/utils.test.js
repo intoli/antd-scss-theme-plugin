@@ -5,7 +5,7 @@ import {
   compileThemeVariables,
   extractLessVariables,
   loadScssThemeAsLess,
-} from '../src/utils.js';
+} from '../src/utils';
 
 
 describe('Ant Design\'s theme file', () => {
