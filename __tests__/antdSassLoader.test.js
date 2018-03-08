@@ -71,7 +71,7 @@ describe('overloadSassLoaderOptions', () => {
 describe('antdSassLoader', () => {
   const outputPath = path.join(__dirname, 'output');
   afterAll(() => {
-    rimraf(path.join(outputPath, '**'), (error) => {
+    rimraf(outputPath, (error) => {
       if (error) {
         throw error;
       }
