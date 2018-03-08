@@ -2,7 +2,7 @@ import path from 'path';
 
 import sass from 'node-sass';
 
-import compileWebpack from './utils';
+import compileWebpack from '../src/testUtils';
 import {
   themeImporter,
   overloadSassLoaderOptions,
