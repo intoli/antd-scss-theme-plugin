@@ -1,6 +1,7 @@
 import path from 'path';
 
 import sass from 'node-sass';
+import rimraf from 'rimraf';
 
 import compileWebpack from '../src/testUtils';
 import {
@@ -68,11 +69,20 @@ describe('overloadSassLoaderOptions', () => {
 
 
 describe('antdSassLoader', () => {
+  const outputPath = path.join(__dirname, 'output');
+  afterAll(() => {
+    rimraf(path.join(outputPath, '**'), (error) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  });
+
   it('enables importing theme variables in scss processed with sass-loader', (done) => {
     const config = {
       entry: path.resolve(__dirname, 'data/test.scss'),
       output: {
-        path: path.join(__dirname, 'output'),
+        path: outputPath,
         filename: 'antdSassLoader.bundle.js',
       },
       module: {
