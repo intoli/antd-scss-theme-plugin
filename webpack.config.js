@@ -7,7 +7,7 @@ const packageJson = require('./package.json');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const developmentOptions = {
+const webpackConfig = {
   devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   externals: [
@@ -43,4 +43,4 @@ const developmentOptions = {
 };
 
 
-module.exports = developmentOptions;
+module.exports = webpackConfig;
