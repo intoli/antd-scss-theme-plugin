@@ -30,6 +30,9 @@
     "url": "https://github.com/prncc/antd-scss-theme-plugin/issues"
   },
   "homepage": "https://github.com/prncc/antd-scss-theme-plugin",
+  "files": [
+    "build/dist"
+  ],
   "dependencies": {
     "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
