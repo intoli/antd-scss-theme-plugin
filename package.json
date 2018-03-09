@@ -1,11 +1,38 @@
 {
   "name": "antd-scss-theme-plugin",
-  "license": "BSD-2-Clause",
+  "description": "A webpack plugin which enables importing and customizing Ant Design's theme variables from scss.",
+  "version": "0.0.1",
+  "main": "build/dist/antd-scss-theme-plugin.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "test": "jest --watch",
-    "watch": "webpack --config webpack.config.js --watch"
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "test": "cross-env NODE_ENV=testing jest --watch",
+    "watch": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prncc/antd-scss-theme-plugin.git"
+  },
+  "keywords": [
+    "webpack",
+    "plugin",
+    "live-reload",
+    "ant-design",
+    "less",
+    "sass",
+    "scss",
+    "less-loader",
+    "sass-loader",
+    "styles"
+  ],
+  "author": "Andre Perunicic <andre@intoli.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/prncc/antd-scss-theme-plugin/issues"
+  },
+  "homepage": "https://github.com/prncc/antd-scss-theme-plugin",
+  "files": [
+    "build/dist"
+  ],
   "dependencies": {
     "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
@@ -23,6 +50,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.3",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^1.9.0",

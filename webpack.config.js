@@ -2,17 +2,21 @@ const path = require('path');
 
 const nodeExternals = require('webpack-node-externals');
 
+const packageJson = require('./package.json');
 
-const developmentOptions = {
+
+const isProduction = process.env.NODE_ENV === 'production';
+
+const webpackConfig = {
+  devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
   entry: path.join(__dirname, 'src', 'index.js'),
   externals: [
     nodeExternals(),
+    'antd',
+    'less',
+    'less-loader',
+    'sass-loader',
   ],
-  output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    libraryTarget: 'commonjs',
-  },
   module: {
     rules: [
       {
@@ -28,12 +32,15 @@ const developmentOptions = {
       },
     ],
   },
-  target: 'node',
-  devtool: 'cheap-module-source-map',
-  node: {
-    __dirname: true,
+  output: {
+    path: isProduction ?
+      path.join(__dirname, 'build', 'dist') : path.join(__dirname, 'build', 'dev'),
+    filename: `${packageJson.name}.js`,
+    library: 'AntdScssThemePlugin',
+    libraryTarget: 'commonjs',
   },
+  target: 'node',
 };
 
 
-module.exports = developmentOptions;
+module.exports = webpackConfig;

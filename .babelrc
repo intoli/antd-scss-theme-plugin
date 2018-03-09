@@ -5,7 +5,7 @@
       {
         "useBuiltIns": true,
         "targets": {
-          "node": "9.6"
+          "node": "8.10.0"
         }
       }
     ],
