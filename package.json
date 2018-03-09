@@ -24,7 +24,7 @@
     "sass-loader",
     "styles"
   ],
-  "author": "Andre Perunicic",
+  "author": "Andre Perunicic <andre@intoli.com>",
   "license": "BSD-2-Clause",
   "bugs": {
     "url": "https://github.com/prncc/antd-scss-theme-plugin/issues"
