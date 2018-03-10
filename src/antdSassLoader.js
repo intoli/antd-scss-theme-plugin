@@ -24,7 +24,9 @@ export const themeImporter = themeScssPath => (url, previousResolve, done) => {
   for (let i = 0; i < pathsToTry.length; i += 1) {
     const potentialResolve = pathsToTry[i];
     if (path.resolve(baseDirectory, potentialResolve) === themeScssPath) {
-      compileThemeVariables(themeScssPath).then(contents => done({ contents }));
+      compileThemeVariables(themeScssPath)
+        .then(contents => done({ contents }))
+        .catch(() => done());
       return;
     }
   }
