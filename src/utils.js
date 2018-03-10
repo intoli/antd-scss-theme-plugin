@@ -64,9 +64,12 @@ export const compileThemeVariables = (themeScssPath) => {
   const themeEntryPath = require.resolve('antd/lib/style/themes/default.less');
   const variableOverrides = themeScssPath ? loadScssThemeAsLess(themeScssPath) : {};
 
-  return extractLessVariables(themeEntryPath, variableOverrides).then(variables => (
-    Object.entries(variables)
-      .map(([name, value]) => `$${name}: ${value};\n`)
-      .join('')
-  ));
+  return extractLessVariables(themeEntryPath, variableOverrides)
+    .then(variables => (
+      Object.entries(variables)
+        .map(([name, value]) => `$${name}: ${value};\n`)
+        .join('')
+    )).catch((error) => {
+      throw error;
+    });
 };
