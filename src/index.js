@@ -9,8 +9,26 @@ class AntdScssThemePlugin {
     AntdScssThemePlugin.SCSS_THEME_PATH = scssThemePath;
   }
 
-  // eslint-disable-next-line
-  apply(compiler) {}
+  apply(compiler) {
+    const afterEmit = (compilation, callback) => {
+      // Watch the theme file for changes.
+      const theme = AntdScssThemePlugin.SCSS_THEME_PATH;
+      if (compilation.fileDependencies && !compilation.fileDependencies.includes(theme)) {
+        compilation.fileDependencies.push(theme);
+      }
+      callback();
+    };
+
+    // Register the callback for...
+    if (compiler.hooks) {
+      // ... webpack 4, or...
+      const plugin = { name: 'AntdScssThemePlugin' };
+      compiler.hooks.afterEmit.tapAsync(plugin, afterEmit);
+    } else {
+      // ... webpack 3.
+      compiler.plugin('after-emit', afterEmit);
+    }
+  }
 
   static themify({ loader, options, overloadLoader = true }) {
     let overloadedLoader;
