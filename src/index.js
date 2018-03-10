@@ -1,7 +1,3 @@
-import { overloadSassLoaderOptions } from './antdSassLoader';
-import { overloadLessLoaderOptions } from './antdLessLoader';
-
-
 class AntdScssThemePlugin {
   SCSS_THEME_PATH;
 
@@ -30,31 +26,23 @@ class AntdScssThemePlugin {
     }
   }
 
-  static themify({ loader, options, overloadLoader = true }) {
+  static themify({ loader, options = {} }) {
     let overloadedLoader;
-    let overloadedOptions;
     switch (loader) {
       case 'sass-loader':
-        if (overloadLoader) {
-          overloadedLoader = require.resolve('./antdSassLoader.js');
-        }
-        overloadedOptions = overloadSassLoaderOptions(options);
+        overloadedLoader = require.resolve('./antdSassLoader.js');
         break;
       case 'less-loader':
-        if (overloadLoader) {
-          overloadedLoader = require.resolve('./antdLessLoader.js');
-        }
-        overloadedOptions = overloadLessLoaderOptions(options);
+        overloadedLoader = require.resolve('./antdLessLoader.js');
         break;
       default:
         overloadedLoader = loader;
-        overloadedOptions = options || {};
         break;
     }
 
     return {
       loader: overloadedLoader,
-      options: overloadedOptions,
+      options,
     };
   }
 }
