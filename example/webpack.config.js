@@ -84,10 +84,7 @@ const config = {
               sourceMap: !isProduction,
             },
           },
-          AntdScssThemePlugin.themify({
-            loader: 'less-loader',
-            options: {},
-          }),
+          AntdScssThemePlugin.themify('less-loader'),
         ],
       },
     ],
