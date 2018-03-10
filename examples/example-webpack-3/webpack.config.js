@@ -1,5 +1,6 @@
 const path = require('path');
 
+const AntdScssThemePlugin = require('../../build/babel');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -59,12 +60,12 @@ const config = {
               localIdentName: '[name]-[local]-[hash:base64:5]',
             },
           },
-          {
+          AntdScssThemePlugin.themify({
             loader: 'sass-loader',
             options: {
               sourceMap: !isProduction,
             },
-          },
+          }),
         ],
       },
       {
@@ -83,14 +84,10 @@ const config = {
               sourceMap: !isProduction,
             },
           },
-          {
+          AntdScssThemePlugin.themify({
             loader: 'less-loader',
-            options: {
-              modifyVars: {
-                '@primary-color': '#f60',
-              },
-            },
-          },
+            options: {},
+          }),
         ],
       },
     ],
@@ -105,6 +102,7 @@ const config = {
       inject: true,
       template: './src/index.html',
     }),
+    new AntdScssThemePlugin(path.join(__dirname, 'src', 'theme.scss')),
   ],
   watchOptions: {
     ignored: /build/,
