@@ -26,7 +26,8 @@ class AntdScssThemePlugin {
     }
   }
 
-  static themify({ loader, options = {} }) {
+  static themify(config) {
+    const { loader, options = {} } = (typeof config === 'string') ? { loader: config } : config;
     let overloadedLoader;
     switch (loader) {
       case 'sass-loader':
