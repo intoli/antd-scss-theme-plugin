@@ -58,9 +58,13 @@ export const overloadSassLoaderOptions = (options) => {
 export default function antdSassLoader(...args) {
   const loaderContext = this;
   const options = getOptions(loaderContext);
+
+  const newLoaderContext = { ...loaderContext };
+  const newOptions = overloadSassLoaderOptions(options);
+  newLoaderContext.query = newOptions;
+
   const scssThemePath = getScssThemePath(options);
+  newLoaderContext.addDependency(scssThemePath);
 
-  loaderContext.addDependency(scssThemePath);
-
-  return sassLoader.call(loaderContext, ...args);
+  return sassLoader.call(newLoaderContext, ...args);
 }
