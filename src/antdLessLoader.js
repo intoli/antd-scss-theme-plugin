@@ -27,18 +27,21 @@ export const overloadLessLoaderOptions = (options) => {
 
 
 /**
- * A wrapper around less-loader whose only additional functionality is to register the theme file
- * as a watched dependency. The loader options should already be modified so that any custom theme
- * variables are passed in through the modifyVars option.
+ * A wrapper around less-loader which overloads loader options and registers the theme file
+ * as a watched dependency.
  * @param {...*} args - Arguments passed to less-loader.
  * @return {*} The return value of less-loader, if any.
  */
 export default function antdLessLoader(...args) {
   const loaderContext = this;
   const options = getOptions(loaderContext);
+
+  const newLoaderContext = { ...loaderContext };
+  const newOptions = overloadLessLoaderOptions(options);
+  newLoaderContext.query = newOptions;
+
   const scssThemePath = getScssThemePath(options);
+  newLoaderContext.addDependency(scssThemePath);
 
-  loaderContext.addDependency(scssThemePath);
-
-  return lessLoader.call(loaderContext, ...args);
+  return lessLoader.call(newLoaderContext, ...args);
 }
