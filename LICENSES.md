@@ -35,7 +35,7 @@ The sections below list the licenses and copyright notices of projects whose cod
 
 ## `less-plugin-variables-output`
 
-The file `src/extractVariablesLessPlugin.js` is based in large part on [less-plugin-variables-output](https://github.com/Craga89/less-plugin-variables-output).
+The plugin in `src/extractVariablesLessPlugin.js` is a modified version of the [less-plugin-variables-output](https://github.com/Craga89/less-plugin-variables-output) plugin.
 
 ---
 
