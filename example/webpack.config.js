@@ -1,6 +1,6 @@
 const path = require('path');
 
-const AntdScssThemePlugin = require('../build/babel');
+const AntdScssThemePlugin = require('../build/dist/lib');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
