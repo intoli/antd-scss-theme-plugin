@@ -11,7 +11,7 @@ import {
 
 
 /**
- * Utility returning a node-sass importer that provides access to all Ant Design theme variables.
+ * Utility returning a node-sass importer that provides access to all of antd's theme variables.
  * @param {string} themeScssPath - Path to scss file containing Ant Design theme variables.
  * @returns {function} Importer that provides access to all compiled Ant Design theme variables
  *   when importing the theme file at themeScssPath.
@@ -34,6 +34,11 @@ export const themeImporter = themeScssPath => (url, previousResolve, done) => {
 };
 
 
+/**
+ * Modify sass-loader's options so that all antd variables are imported from the SCSS theme file.
+ * @param {Object} options - Options for sass-loader.
+ * @return {Object} Options modified to includ a custom importer that handles the SCSS theme file.
+ */
 export const overloadSassLoaderOptions = (options) => {
   const newOptions = { ...options };
   const scssThemePath = getScssThemePath(options);
@@ -57,6 +62,12 @@ export const overloadSassLoaderOptions = (options) => {
 };
 
 
+/**
+ * A wrapper around sass-loader which overloads loader options to include a custom importer handling
+ * variable imports from the SCSS theme file, and registers the theme file as a watched dependency.
+ * @param {...*} args - Arguments passed to sass-loader.
+ * @return {*} The return value of sass-loader, if any.
+ */
 export default function antdSassLoader(...args) {
   const loaderContext = this;
   const options = getOptions(loaderContext);
