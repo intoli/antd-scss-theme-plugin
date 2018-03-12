@@ -5,6 +5,11 @@ class AntdScssThemePlugin {
     AntdScssThemePlugin.SCSS_THEME_PATH = scssThemePath;
   }
 
+  /**
+   * Explicitly add the SCSS theme file to file dependencies.
+   * @param {Object} compiler - A webpack compiler.
+   * @return {undefined}
+   */
   apply(compiler) {
     const afterEmit = (compilation, callback) => {
       // Watch the theme file for changes.
@@ -26,6 +31,15 @@ class AntdScssThemePlugin {
     }
   }
 
+  /**
+   * Replace a either less-loader or sass-loader with a custom loader which wraps it and extends
+   * its functionality. In the case of less-loader, this enables live-reloading and customizing
+   * antd's theme using an SCSS theme file. In the case of less loader, this enables importing
+   * all of antd's theme and color variables from the SCSS theme file.
+   * antd.
+   * @param {(string|Object)} config - A webpack loader config.
+   * @return {Object} Loader config using the wrapped loader instead of the original.
+   */
   static themify(config) {
     const { loader, options = {} } = (typeof config === 'string') ? { loader: config } : config;
     let overloadedLoader;
