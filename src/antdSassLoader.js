@@ -12,7 +12,7 @@ import {
 
 /**
  * Utility returning a node-sass importer that provides access to all of antd's theme variables.
- * @param {string} themeScssPath - Path to scss file containing Ant Design theme variables.
+ * @param {string} themeScssPath - Path to SCSS file containing Ant Design theme variables.
  * @returns {function} Importer that provides access to all compiled Ant Design theme variables
  *   when importing the theme file at themeScssPath.
  */

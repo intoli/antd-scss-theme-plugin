@@ -34,7 +34,7 @@ class AntdScssThemePlugin {
   /**
    * Replace a either less-loader or sass-loader with a custom loader which wraps it and extends
    * its functionality. In the case of less-loader, this enables live-reloading and customizing
-   * antd's theme using an SCSS theme file. In the case of less loader, this enables importing
+   * antd's theme using an SCSS theme file. In the case of less-loader, this enables importing
    * all of antd's theme and color variables from the SCSS theme file.
    * antd.
    * @param {(string|Object)} config - A webpack loader config.
