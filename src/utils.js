@@ -38,7 +38,7 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
 
 
 /**
- * Read variables from a scss theme file into a less-formatted dictionary.
+ * Read variables from a SCSS theme file into an object with Less-style variable names as keys.
  * @param {string} themeScssPath - Path to scss file containing only scss variables.
  * @return {Object} Object of the form { '@variable': 'value' }.
  */
