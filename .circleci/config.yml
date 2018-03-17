@@ -11,6 +11,7 @@ whitelist: &whitelist
     - .gitignore
     - jest.config.js
     - build/*
+    - misc/*
     - LICENSE.md
     - package.json
     - README.md
