@@ -2,10 +2,11 @@
   "name": "antd-scss-theme-plugin",
   "description": "A webpack plugin which enables importing and customizing Ant Design's theme variables from scss.",
   "version": "0.0.1",
-  "main": "build/dist/antd-scss-theme-plugin.js",
+  "main": "build/dist/lib/index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "test": "cross-env NODE_ENV=testing jest --watch",
+    "build": "cross-env NODE_ENV=production babel src --out-dir build/dist/lib",
+    "test": "cross-env NODE_ENV=testing jest",
+    "test:watch": "cross-env NODE_ENV=testing jest --watch",
     "watch": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch"
   },
   "repository": {
@@ -45,9 +46,11 @@
   },
   "devDependencies": {
     "antd": "^3.2.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
     "cross-env": "^5.1.3",

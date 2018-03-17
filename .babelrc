@@ -1,11 +1,14 @@
 {
+  "plugins": [
+    "add-module-exports"
+  ],
   "presets": [
     [
       "env",
       {
         "useBuiltIns": true,
         "targets": {
-          "node": "8.10.0"
+          "node": "6.9.0"
         }
       }
     ],

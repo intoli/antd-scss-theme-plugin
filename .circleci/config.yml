@@ -1,0 +1,114 @@
+defaults: &defaults
+  working_directory: ~/antd-scss-theme-plugin
+  docker:
+    - image: circleci/node:latest
+
+whitelist: &whitelist
+  paths:
+    - __tests__/*
+    - .babelrc
+    - .eslintrc
+    - .gitignore
+    - jest.config.js
+    - build/*
+    - LICENSE.md
+    - package.json
+    - README.md
+    - src/*
+    - yarn.lock
+
+version: 2
+jobs:
+  checkout:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Update Yarn
+          command: 'sudo npm install -g yarn@latest'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: ~/antd-scss-theme-plugin
+          paths:
+          <<: *whitelist
+
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/antd-scss-theme-plugin
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Build
+          command: yarn build
+      - store_artifacts:
+          path: ./build/dist
+          destination: dist
+      - persist_to_workspace:
+          root: ~/antd-scss-theme-plugin
+          paths:
+          <<: *whitelist
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/antd-scss-theme-plugin
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Test
+          command: yarn test
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - checkout
+      - build:
+          filters:
+            tags:
+              ignore: /v[0-9]+(\.[0-9]+)*/
+          requires:
+            - checkout
+      - test:
+          filters:
+            tags:
+              ignore: /v[0-9]+(\.[0-9]+)*/
+          requires:
+            - build
+
+  release:
+    jobs:
+      - checkout:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+      - build:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - checkout
+      - test:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
+            branches:
+              ignore: /.*/
+          requires:
+            - build
