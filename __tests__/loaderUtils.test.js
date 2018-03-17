@@ -25,6 +25,6 @@ describe('getScssThemePath', () => {
     const plugin = new AntdScssThemePlugin();
     expect(() => {
       getScssThemePath({});
-    }).toThrow(/scss theme file must be specified/);
+    }).toThrow(/scss theme file must be specified/i);
   });
 });

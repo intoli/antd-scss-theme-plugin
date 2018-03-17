@@ -63,7 +63,7 @@ describe('overloadSassLoaderOptions', () => {
     AntdScssThemePlugin.SCSS_THEME_PATH = null;
     expect(() => {
       overloadSassLoaderOptions({});
-    }).toThrow(/scss theme file must be specified/);
+    }).toThrow(/scss theme file must be specified/i);
   });
 });
 
