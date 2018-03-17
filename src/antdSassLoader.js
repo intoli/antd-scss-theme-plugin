@@ -74,6 +74,7 @@ export default function antdSassLoader(...args) {
 
   const newLoaderContext = { ...loaderContext };
   const newOptions = overloadSassLoaderOptions(options);
+  delete newOptions.scssThemePath;
   newLoaderContext.query = newOptions;
 
   const scssThemePath = getScssThemePath(options);

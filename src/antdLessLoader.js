@@ -38,6 +38,7 @@ export default function antdLessLoader(...args) {
 
   const newLoaderContext = { ...loaderContext };
   const newOptions = overloadLessLoaderOptions(options);
+  delete newOptions.scssThemePath;
   newLoaderContext.query = newOptions;
 
   const scssThemePath = getScssThemePath(options);
