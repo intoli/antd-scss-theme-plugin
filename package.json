@@ -5,7 +5,8 @@
   "main": "build/dist/lib/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir build/dist/lib",
-    "test": "cross-env NODE_ENV=testing jest --watch",
+    "test": "cross-env NODE_ENV=testing jest",
+    "test:watch": "cross-env NODE_ENV=testing jest --watch",
     "watch": "cross-env NODE_ENV=development webpack --config webpack.config.js --watch"
   },
   "repository": {
