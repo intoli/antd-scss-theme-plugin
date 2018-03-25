@@ -1,3 +1,5 @@
+# antd-scss-theme-plugin
+
 `antd-scss-theme-plugin` is a [Webpack plugin](https://webpack.js.org/concepts/plugins/) which allows you to effectively use [Ant Design](https://ant.design/) in a project with SCSS styling.
 It makes it possible to:
 
@@ -6,7 +8,7 @@ It makes it possible to:
 3. Live-reload updated Ant Design components when `theme.scss` changes.
 
 
-# Installation
+## Installation
 
 This plugin is published as [antd-scss-theme-plugin]() on npm:
 
@@ -23,13 +25,13 @@ npm install --save-dev less-loader sass-loader
 ```
 
 
-# Configuration
+## Configuration
 
 To use `antd-scss-theme-plugin`, you need to configure Ant Design to use Less stylesheets when loading components, and connect a few loaders with the plugin in your Webpack setup.
 You can find a fully configured project in the [example/](example/) directory.
 
 
-## Step 1. Configure Ant Design to Use Less Stylesheets
+### Step 1. Configure Ant Design to Use Less Stylesheets
 
 In order to customize Ant Design components, you need to configure `antd` to load its components with Less stylesheets instead of with pre-compiled CSS.
 The [official documentation](https://ant.design/docs/react/customize-theme) explains this to some degree, but here are the explicit steps you should take.
@@ -83,7 +85,7 @@ import { Button } from 'antd';
 So, in addition to enabling styling customizations, this has the potential to reduce the size of your Webpack bundle.
 
 
-## Step 2. Use `antd-scss-theme-plugin` in Your Webpack Setup
+### Step 2. Use `antd-scss-theme-plugin` in Your Webpack Setup
 
 First, initialize the plugin by passing your theme file's path to the constructor, and add it to your Webpack config's `plugins` array:
 
@@ -134,9 +136,9 @@ AntdScssThemePlugin.themify({
 ```
 
 
-# Usage
+## Usage
 
-## Customize Ant Design's Theme
+### Customize Ant Design's Theme
 
 With the project configured, you can customize Ant Design's theme by specifying Ant Design variables in the theme file (e.g., `theme.scss`) passed to the plugin's constructor.
 For example, if `theme.scss` has the following contents:
@@ -152,7 +154,7 @@ then your rendered components will look something like this:
 You can customize any Less variable that `antd` uses in this way, just relace the `@` with a `$`, e.g, `@info-color` becomes `$info-color`.
 
 
-## Use Ant Design's Customized Color and Theme Variables
+### Use Ant Design's Customized Color and Theme Variables
 
 If you import the `theme.scss` file somewhere in your project, you will have access to all of Ant Design's [color](https://github.com/ant-design/ant-design/blob/master/components/style/color/colors.less) and [theme](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) variables.
 Even if you only specify only a subset of variables in `theme.scss`, all of them should be available.
@@ -167,7 +169,7 @@ For instance, with `theme.scss` containing only a `$primary-color` definition as
 ```
 
 
-## Live Reload Components when Ant Design Styles Change
+### Live Reload Components when Ant Design Styles Change
 
 Since `antd-scss-theme-plugin` registers the theme file as a watched dependency with Webpack, changes in the theme file will result in recompilations of components that use it.
 To learn how to set up your project to use live reloading, see this in action in the working [example/](example/).
