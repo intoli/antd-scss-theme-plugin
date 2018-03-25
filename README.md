@@ -1,4 +1,29 @@
-# antd-scss-theme-plugin
+<h1 vertical-align="middle">antd-scss-theme-plugin
+    <a targe="_blank" href="https://twitter.com/home?status=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20an%20SCSS%20theme%20file.%0A%0Ahttps%3A%2F%2Fgithub.com%2Fprncc%2Fantd-scss-theme-plugin">
+        <img height="26px" src="https://simplesharebuttons.com/images/somacro/twitter.png"
+            alt="Tweet"></a>
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/prncc/antd-scss-theme-plugin">
+        <img height="26px" src="https://simplesharebuttons.com/images/somacro/facebook.png"
+            alt="Share on Facebook"></a>
+    <a target="_blank" href="http://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fprncc%2Fantd-scss-theme-plugin&title=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20SCSS">
+        <img height="26px" src="https://simplesharebuttons.com/images/somacro/reddit.png"
+            alt="Share on Reddit"></a>
+    <a target="_blank" href="https://news.ycombinator.com/submitlink?u=https://github.com/prncc/antd-scss-theme-plugin&t=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20SCSS">
+        <img height="26px" src="resources/y-combinator.png"
+            alt="Share on Hacker News"></a>
+</h1>
+
+<p align="left">
+    <a href="https://circleci.com/gh/prncc/antd-scss-theme-plugin/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/prncc/antd-scss-theme-plugin/master.svg"
+            alt="Build Status"></a>
+    <a href="https://github.com/prncc/antd-scss-theme-plugin/blob/master/LICENSE.md">
+        <img src="https://img.shields.io/npm/l/antd-scss-theme-plugin.svg"
+            alt="License"></a>
+    <a href="https://pypi.python.org/pypi/exodus-bundler/">
+        <img src="https://img.shields.io/npm/v/antd-scss-theme-plugin.svg"
+            alt="NPM Version"></a>
+</p>
 
 `antd-scss-theme-plugin` is a [Webpack plugin](https://webpack.js.org/concepts/plugins/) which allows you to effectively use [Ant Design](https://ant.design/) in a project with SCSS styling.
 It makes it possible to:
