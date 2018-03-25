@@ -20,7 +20,7 @@
     <a href="https://github.com/prncc/antd-scss-theme-plugin/blob/master/LICENSE.md">
         <img src="https://img.shields.io/npm/l/antd-scss-theme-plugin.svg"
             alt="License"></a>
-    <a href="https://pypi.python.org/pypi/exodus-bundler/">
+    <a href="https://www.npmjs.com/package/antd-scss-theme-plugin">
         <img src="https://img.shields.io/npm/v/antd-scss-theme-plugin.svg"
             alt="NPM Version"></a>
 </p>
