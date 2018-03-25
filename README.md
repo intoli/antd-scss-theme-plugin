@@ -147,7 +147,7 @@ $primary-color: #fe8019;
 
 then your rendered components will look something like this:
 
-![Components with Primary Color #fe8019](materials/orange-sample.png)
+![Components with Primary Color #fe8019](resources/orange-sample.png)
 
 You can customize any Less variable that `antd` uses in this way, just relace the `@` with a `$`, e.g, `@info-color` becomes `$info-color`.
 
