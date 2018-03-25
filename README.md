@@ -136,3 +136,38 @@ AntdScssThemePlugin.themify({
 
 # Usage
 
+## Customize Ant Design's Theme
+
+With the project configured, you can customize Ant Design's theme by specifying Ant Design variables in the theme file (e.g., `theme.scss`) passed to the plugin's constructor.
+For example, if `theme.scss` has the following contents:
+
+```scss
+$primary-color: #fe8019;
+```
+
+then your rendered components will look something like this:
+
+![Components with Primary Color #fe8019](materials/orange-sample.png)
+
+You can customize any Less variable that `antd` uses in this way, just relace the `@` with a `$`, e.g, `@info-color` becomes `$info-color`.
+
+
+## Use Ant Design's Customized Color and Theme Variables
+
+If you import the `theme.scss` file somewhere in your project, you will have access to all of Ant Design's [color](https://github.com/ant-design/ant-design/blob/master/components/style/color/colors.less) and [theme](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) variables.
+Even if you only specify only a subset of variables in `theme.scss`, all of them should be available.
+For instance, with `theme.scss` containing only a `$primary-color` definition as above, you would still be able to do something like:
+
+```scss
+@import '../theme.scss';
+
+.header {
+  color: $blue-10;
+}
+```
+
+
+## Live Reload Components when Ant Design Styles Change
+
+Since `antd-scss-theme-plugin` registers the theme file as a watched dependency with Webpack, changes in the theme file will result in recompilations of components that use it.
+To learn how to set up your project to use live reloading, see this in action in the working [example/](example/).
