@@ -10,7 +10,7 @@ It makes it possible to:
 
 ## Installation
 
-This plugin is published as [antd-scss-theme-plugin]() on npm:
+This plugin is published as [antd-scss-theme-plugin](https://www.npmjs.com/package/antd-scss-theme-plugin) on npm:
 
 ```bash
 npm install --save-dev antd-scss-theme-plugin
