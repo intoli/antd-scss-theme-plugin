@@ -1,6 +1,6 @@
 {
   "name": "antd-scss-theme-plugin",
-  "description": "A webpack plugin which enables importing and customizing Ant Design's theme variables from scss.",
+  "description": "A Webpack plugin for customizing Ant Design with SCSS.",
   "version": "1.0.0",
   "main": "build/dist/lib/index.js",
   "scripts": {
