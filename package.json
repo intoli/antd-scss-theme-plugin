@@ -35,12 +35,12 @@
     "build/dist"
   ],
   "dependencies": {
+    "less": "^2.3.7",
     "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
   },
   "peerDependencies": {
     "antd": "^3.2.0",
-    "less": "^2.3.7",
     "less-loader": "^4.0.5",
     "sass-loader": "^6.0.6"
   },
