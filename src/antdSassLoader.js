@@ -16,7 +16,7 @@ import {
  * @returns {function} Importer that provides access to all compiled Ant Design theme variables
  *   when importing the theme file at themeScssPath.
  */
-export const themeImporter = themeScssPath => (url, previousResolve, done) => {
+export const themeImporter = (themeScssPath, contents) => (url, previousResolve, done) => {
   const request = urlToRequest(url);
   const pathsToTry = importsToResolve(request);
 
@@ -24,9 +24,7 @@ export const themeImporter = themeScssPath => (url, previousResolve, done) => {
   for (let i = 0; i < pathsToTry.length; i += 1) {
     const potentialResolve = pathsToTry[i];
     if (path.resolve(baseDirectory, potentialResolve) === themeScssPath) {
-      compileThemeVariables(themeScssPath)
-        .then(contents => done({ contents }))
-        .catch(() => done());
+      done({ contents });
       return;
     }
   }
