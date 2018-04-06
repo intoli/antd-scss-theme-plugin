@@ -84,5 +84,9 @@ export default function antdSassLoader(...args) {
 
       return sassLoader.call(newLoaderContext, ...args);
     })
-    .catch(error => callback(error));
+    .catch((error) => {
+      // Remove unhelpful stack from error.
+      error.stack = undefined; // eslint-disable-line no-param-reassign
+      callback(error);
+    });
 }

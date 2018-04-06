@@ -37,9 +37,15 @@ export default function antdLessLoader(...args) {
   const options = getOptions(loaderContext);
 
   const newLoaderContext = { ...loaderContext };
-  const newOptions = overloadLessLoaderOptions(options);
-  delete newOptions.scssThemePath;
-  newLoaderContext.query = newOptions;
+  try {
+    const newOptions = overloadLessLoaderOptions(options);
+    delete newOptions.scssThemePath;
+    newLoaderContext.query = newOptions;
+  } catch (error) {
+    // Remove unhelpful stack from error.
+    error.stack = undefined; // eslint-disable-line no-param-reassign
+    throw error;
+  }
 
   const scssThemePath = getScssThemePath(options);
   newLoaderContext.addDependency(scssThemePath);
