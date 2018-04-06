@@ -43,7 +43,12 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
  * @return {Object} Object of the form { '@variable': 'value' }.
  */
 export const loadScssThemeAsLess = (themeScssPath) => {
-  const rawTheme = scssToJson(themeScssPath);
+  let rawTheme;
+  try {
+    rawTheme = scssToJson(themeScssPath);
+  } catch (error) {
+    throw new Error(`Could not compile "${themeScssPath}" for variable extraction.`);
+  }
   const theme = {};
   Object.keys(rawTheme).forEach((sassVariableName) => {
     const lessVariableName = sassVariableName.replace(/^\$/, '@');
