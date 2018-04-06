@@ -1,9 +1,6 @@
 @import '../theme.scss';
 
-.container {
-  padding: 10px;
-}
-
-.header {
-  color: $blue-10;
+.form {
+  background: $blue-1;
+  padding: $padding-lg;
 }

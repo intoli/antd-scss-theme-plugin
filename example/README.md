@@ -15,10 +15,10 @@ yarn install
 Finally, start the development server
 
 ```bash
-yarn watch
+yarn start
 ```
 
-which will let you see the example by visiting `https://localhost:9003`.
+which will hot-reload the example served at `https://localhost:9003`.
 
 Changing the [src/theme.scss](src/theme.scss) should have an effect on the app's appearance.
 Try using SCSS versions of various Ant Design variables (e.g., use `$gold-2` instead of `@gold-2`) in [src/components/App.scss](src/components/App.scss).
