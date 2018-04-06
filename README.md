@@ -52,7 +52,7 @@ npm install --save-dev less-loader sass-loader
 
 ## Configuration
 
-To use `antd-scss-theme-plugin`, you need to configure Ant Design to use Less stylesheets when loading components, and connect a few loaders with the plugin in your Webpack setup.
+To use `antd-scss-theme-plugin`, you need to configure Ant Design to use Less stylesheets when loading components, and to connect a few loaders with the plugin in your Webpack setup.
 You can find a fully configured project in the [example](example/) directory.
 
 
