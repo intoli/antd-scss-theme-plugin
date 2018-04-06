@@ -47,7 +47,10 @@ export const loadScssThemeAsLess = (themeScssPath) => {
   try {
     rawTheme = scssToJson(themeScssPath);
   } catch (error) {
-    throw new Error(`Could not compile "${themeScssPath}" for variable extraction.`);
+    throw new Error(
+      `Could not compile the SCSS theme file "${themeScssPath}" for the purpose of variable ` +
+      'extraction. This is likely because it contains a Sass error.',
+    );
   }
   const theme = {};
   Object.keys(rawTheme).forEach((sassVariableName) => {
