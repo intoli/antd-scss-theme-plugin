@@ -8,7 +8,7 @@ import { getScssThemePath } from './loaderUtils';
 /**
  * Modify less-loader's options with variable overrides extracted from the SCSS theme.
  * @param {Object} options - Options for less-loader.
- * @return {Objects} Options modified to include theme variables in the modifyVars property.
+ * @return {Object} Options modified to include theme variables in the modifyVars property.
  */
 export const overloadLessLoaderOptions = (options) => {
   const scssThemePath = getScssThemePath(options);
