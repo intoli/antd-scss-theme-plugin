@@ -37,13 +37,14 @@ export const themeImporter = (themeScssPath, contents) => (url, previousResolve,
  * @param {Object} options - Options for sass-loader.
  * @return {Object} Options modified to includ a custom importer that handles the SCSS theme file.
  */
-export const overloadSassLoaderOptions = (options) => {
+export const overloadSassLoaderOptions = async (options) => {
   const newOptions = { ...options };
   const scssThemePath = getScssThemePath(options);
 
-  let importer;
-  const extraImporter = themeImporter(scssThemePath);
+  const contents = await compileThemeVariables(scssThemePath);
+  const extraImporter = themeImporter(scssThemePath, contents);
 
+  let importer;
   if ('importer' in options) {
     if (Array.isArray(options.importer)) {
       importer = [...options.importer, extraImporter];
@@ -64,19 +65,24 @@ export const overloadSassLoaderOptions = (options) => {
  * A wrapper around sass-loader which overloads loader options to include a custom importer handling
  * variable imports from the SCSS theme file, and registers the theme file as a watched dependency.
  * @param {...*} args - Arguments passed to sass-loader.
- * @return {*} The return value of sass-loader, if any.
+ * @return {undefined}
  */
 export default function antdSassLoader(...args) {
   const loaderContext = this;
+  const callback = loaderContext.async();
   const options = getOptions(loaderContext);
 
   const newLoaderContext = { ...loaderContext };
-  const newOptions = overloadSassLoaderOptions(options);
-  delete newOptions.scssThemePath;
-  newLoaderContext.query = newOptions;
 
-  const scssThemePath = getScssThemePath(options);
-  newLoaderContext.addDependency(scssThemePath);
+  overloadSassLoaderOptions(options)
+    .then((newOptions) => {
+      delete newOptions.scssThemePath; // eslint-disable-line no-param-reassign
+      newLoaderContext.query = newOptions;
 
-  return sassLoader.call(newLoaderContext, ...args);
+      const scssThemePath = getScssThemePath(options);
+      newLoaderContext.addDependency(scssThemePath);
+
+      return sassLoader.call(newLoaderContext, ...args);
+    })
+    .catch(error => callback(error));
 }
