@@ -77,7 +77,5 @@ export const compileThemeVariables = (themeScssPath) => {
       Object.entries(variables)
         .map(([name, value]) => `$${name}: ${value};\n`)
         .join('')
-    )).catch((error) => {
-      throw error;
-    });
+    ));
 };
