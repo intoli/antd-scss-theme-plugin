@@ -43,7 +43,15 @@ export const extractLessVariables = (lessEntryPath, variableOverrides = {}) => {
  * @return {Object} Object of the form { '@variable': 'value' }.
  */
 export const loadScssThemeAsLess = (themeScssPath) => {
-  const rawTheme = scssToJson(themeScssPath);
+  let rawTheme;
+  try {
+    rawTheme = scssToJson(themeScssPath);
+  } catch (error) {
+    throw new Error(
+      `Could not compile the SCSS theme file "${themeScssPath}" for the purpose of variable ` +
+      'extraction. This is likely because it contains a Sass error.',
+    );
+  }
   const theme = {};
   Object.keys(rawTheme).forEach((sassVariableName) => {
     const lessVariableName = sassVariableName.replace(/^\$/, '@');
@@ -69,7 +77,5 @@ export const compileThemeVariables = (themeScssPath) => {
       Object.entries(variables)
         .map(([name, value]) => `$${name}: ${value};\n`)
         .join('')
-    )).catch((error) => {
-      throw error;
-    });
+    ));
 };

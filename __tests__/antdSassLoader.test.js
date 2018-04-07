@@ -9,14 +9,16 @@ import {
   overloadSassLoaderOptions,
 } from '../src/antdSassLoader';
 import AntdScssThemePlugin from '../src/index';
+import { compileThemeVariables } from '../src/utils';
 
 
 describe('themeImporter', () => {
-  it('produces an importer that allows importing compiled antd variables', (done) => {
+  it('produces an importer that allows importing compiled antd variables', async (done) => {
     const themePath = path.resolve(__dirname, 'data/theme.scss');
+    const contents = await compileThemeVariables(themePath);
     sass.render({
       file: path.resolve(__dirname, 'data/test.scss'),
-      importer: themeImporter(themePath),
+      importer: themeImporter(themePath, contents),
     }, (error, result) => {
       const compiledColor = result.css.toString().match(/background: (.*);/)[1];
       expect(compiledColor).toBe('#faad14');
@@ -30,8 +32,8 @@ describe('overloadSassLoaderOptions', () => {
   const mockImporter = (url, previous, done) => { done(); };
   const scssThemePath = path.resolve(__dirname, 'data/theme.scss');
 
-  it('adds an extra when given no importers', () => {
-    const overloadedOptions = overloadSassLoaderOptions({
+  it('adds an extra when given no importers', async () => {
+    const overloadedOptions = await overloadSassLoaderOptions({
       scssThemePath,
     });
     expect(typeof overloadedOptions.importer).toBe('function');
@@ -41,8 +43,8 @@ describe('overloadSassLoaderOptions', () => {
     ['existing importer', mockImporter],
     ['existing importer array', [mockImporter]],
   ].forEach(([description, importer]) => {
-    it(`adds an importer when given an ${description}`, () => {
-      const overloadedOptions = overloadSassLoaderOptions({
+    it(`adds an importer when given an ${description}`, async () => {
+      const overloadedOptions = await overloadSassLoaderOptions({
         importer,
         scssThemePath,
       });
@@ -52,18 +54,20 @@ describe('overloadSassLoaderOptions', () => {
     });
   });
 
-  it('uses scss theme path from plugin when not given one through options', () => {
+  it('uses scss theme path from plugin when not given one through options', async () => {
     // eslint-disable-next-line no-unused-vars
     const plugin = new AntdScssThemePlugin(scssThemePath);
-    const overloadedOptions = overloadSassLoaderOptions({});
+    const overloadedOptions = await overloadSassLoaderOptions({});
     expect(typeof overloadedOptions.importer).toBe('function');
   });
 
-  it('throws error when no scss theme path is supplied', () => {
+  it('throws error when no scss theme path is supplied', (done) => {
     AntdScssThemePlugin.SCSS_THEME_PATH = null;
-    expect(() => {
-      overloadSassLoaderOptions({});
-    }).toThrow(/scss theme file must be specified/i);
+    overloadSassLoaderOptions({})
+      .catch((error) => {
+        expect(error.message).toMatch(/scss theme file must be specified/i);
+        done();
+      });
   });
 });
 
