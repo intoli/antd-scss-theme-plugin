@@ -4,6 +4,7 @@
     "start": "NODE_ENV=development webpack-dev-server --config webpack.config.js --hot"
   },
   "devDependencies": {
+    "antd-scss-theme-plugin": "^1.0.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.3",

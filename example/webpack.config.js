@@ -1,6 +1,6 @@
 const path = require('path');
 
-const AntdScssThemePlugin = require('../build/dist/lib');
+const AntdScssThemePlugin = require('antd-scss-theme-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
