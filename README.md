@@ -135,7 +135,7 @@ For example, in the config from Step 1, you would change the line
 to
 
 ```javascript
-AntdScssThemePlugin('less-loader'),
+AntdScssThemePlugin.themify('less-loader'),
 ```
 
 This works even when your loader has options, e.g., you would change
