@@ -26,11 +26,13 @@
 </p>
 
 `antd-scss-theme-plugin` is a [Webpack plugin](https://webpack.js.org/concepts/plugins/) which allows you to effectively use [Ant Design](https://ant.design/) in a project with SCSS styling.
-It makes it possible to:
+With it you can:
 
-1. Use an SCSS theme file (like `theme.scss`, for example) to customize Ant Design's theme.
-2. Access every Ant Design [theme](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) and [color](https://github.com/ant-design/ant-design/blob/master/components/style/color/colors.less) variable in your SCSS files.
-3. Live-reload updated Ant Design components when `theme.scss` changes, without having to reset your Webpack server.
+1. Customize Ant Design by specifying theme variable overrides through a single `theme.scss` file.
+2. `@import` Ant Design's [theme](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) and [color](https://github.com/ant-design/ant-design/blob/master/components/style/color/colors.less) variables from your `theme.scss` file.
+3. Hot reload your project when `theme.scss` changes.
+
+For a more detailed overview of the plugin and its usage, check out the [Using Ant Design in Sass-Styled Projects](https://intoli.com/blog/antd-scss-theme-plugin/) article on [Intoli's blog](https://intoli.com/blog/).
 
 
 ## Installation
