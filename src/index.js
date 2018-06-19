@@ -14,8 +14,16 @@ class AntdScssThemePlugin {
     const afterEmit = (compilation, callback) => {
       // Watch the theme file for changes.
       const theme = AntdScssThemePlugin.SCSS_THEME_PATH;
-      if (compilation.fileDependencies && !compilation.fileDependencies.includes(theme)) {
+      if (
+        Array.isArray(compilation.fileDependencies)
+        && !compilation.fileDependencies.includes(theme)
+      ) {
         compilation.fileDependencies.push(theme);
+      } else if (
+        compilation.fileDependencies instanceof Set
+        && !compilation.fileDependencies.has(theme)
+      ) {
+        compilation.fileDependencies.add(theme);
       }
       callback();
     };
