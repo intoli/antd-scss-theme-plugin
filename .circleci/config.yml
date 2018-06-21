@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/antd-scss-theme-plugin
   docker:
-    - image: circleci/node:latest
+    - image: circleci/node:8.11.3
 
 whitelist: &whitelist
   paths:
@@ -28,12 +28,12 @@ jobs:
           name: Update Yarn
           command: 'sudo npm install -g yarn@latest'
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
       - persist_to_workspace:
@@ -47,7 +47,7 @@ jobs:
       - attach_workspace:
           at: ~/antd-scss-theme-plugin
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Build
           command: yarn build
@@ -65,7 +65,7 @@ jobs:
       - attach_workspace:
           at: ~/antd-scss-theme-plugin
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: yarn-cache-{{ checksum "yarn.lock" }}
       - run:
           name: Test
           command: yarn test
