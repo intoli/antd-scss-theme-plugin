@@ -35,6 +35,19 @@ With it you can:
 :book: For a more detailed overview of the plugin and its usage, check out the [Using Ant Design in Sass-Styled Projects](https://intoli.com/blog/antd-scss-theme-plugin/) article on [Intoli's blog](https://intoli.com/blog/).
 
 
+### Table of Contents
+
+- [Installation](#installation) - Instructions about installing this Webpack plugin from `npm`.
+- [Configuration](#configuration)
+    - [Step 1. Configure Ant Design to Use Less Stylesheets](#step-1-configure-ant-design-to-use-less-stylesheets) - Instructions for configuring `antd` to use Less instead of pre-compiled CSS.
+    - [Step 2. Use `antd-scss-theme-plugin` in Your Webpack Setup](#step-2-use-antd-scss-theme-plugin-in-your-webpack-setup) - Instructions for enabling this plugin.
+- [Usage](#usage)
+    - [Customize Ant Design's Theme](#customize-ant-designs-theme) - How to specify theme variable overrides in SCSS.
+    - [Use Ant Design's Customized Color and Theme Variables](#use-ant-designs-customized-color-and-theme-variables) - How to import (customized) theme variables in SCSS files throughout your project.
+    - [Live Reload Components when Ant Design Styles Change](#live-reload-components-when-ant-design-styles-change) - A reminder that hot-reloading works with this plugin.
+
+
+
 ## Installation
 
 This plugin is published as [antd-scss-theme-plugin](https://www.npmjs.com/package/antd-scss-theme-plugin) on `npm`:
