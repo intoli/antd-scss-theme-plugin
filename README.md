@@ -188,7 +188,7 @@ For example, if `theme.scss` has the following contents
 $primary-color: #fe8019;
 ```
 
-then the interface will change from its default <span style="color: #1890ff">blue <code style="color: #1890ff; background: #edf6fd;">#1890ff</code></span> to a louder <span style="color: #fe8019">orange <code style="color: #fe8019; background: #fff5ef;">#fe8019</code></span>:
+then the interface will no longer be based off of the default blue `#1890ff`, but rather a louder orange `#fe8019`:
 
 ![Effects of Changing Primary Color to #fe8019](https://raw.githubusercontent.com/prncc/antd-scss-theme-plugin/master/resources/blue-orange-comparison.png)
 
