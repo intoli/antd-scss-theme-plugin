@@ -32,12 +32,12 @@ With it you can:
 2. `@import` Ant Design's [theme](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) and [color](https://github.com/ant-design/ant-design/blob/master/components/style/color/colors.less) variables from your `theme.scss` file.
 3. Hot reload your project when `theme.scss` changes.
 
-For a more detailed overview of the plugin and its usage, check out the [Using Ant Design in Sass-Styled Projects](https://intoli.com/blog/antd-scss-theme-plugin/) article on [Intoli's blog](https://intoli.com/blog/).
+:book: For a more detailed overview of the plugin and its usage, check out the [Using Ant Design in Sass-Styled Projects](https://intoli.com/blog/antd-scss-theme-plugin/) article on [Intoli's blog](https://intoli.com/blog/).
 
 
 ## Installation
 
-This plugin is published as [antd-scss-theme-plugin](https://www.npmjs.com/package/antd-scss-theme-plugin) on npm:
+This plugin is published as [antd-scss-theme-plugin](https://www.npmjs.com/package/antd-scss-theme-plugin) on `npm`:
 
 ```bash
 npm install --save-dev antd-scss-theme-plugin
