@@ -1,7 +1,7 @@
 defaults: &defaults
   working_directory: ~/antd-scss-theme-plugin
   docker:
-    - image: circleci/node:latest
+    - image: circleci/node:8.11.3
 
 whitelist: &whitelist
   paths:
