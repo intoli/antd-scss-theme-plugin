@@ -168,16 +168,16 @@ AntdScssThemePlugin.themify({
 ### Customize Ant Design's Theme
 
 With the project configured, you can customize Ant Design's theme by specifying [Ant Design theme variables](https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less) in your SCSS theme file (e.g., `theme.scss`).
-For example, if `theme.scss` has the following contents:
+For example, if `theme.scss` has the following contents
 
 ```scss
 /* theme.scss */
 $primary-color: #fe8019;
 ```
 
-then your rendered components will look something like this:
+then the interface will change from its default <span style="color: #1890ff">blue <code style="color: #1890ff; background: #edf6fd;">#1890ff</code></span> to a louder <span style="color: #fe8019">orange <code style="color: #fe8019; background: #fff5ef;">#fe8019</code></span>:
 
-![Components with Primary Color #fe8019](https://raw.githubusercontent.com/prncc/antd-scss-theme-plugin/master/resources/orange-sample.png)
+![Effects of Changing Primary Color to #fe8019](https://raw.githubusercontent.com/prncc/antd-scss-theme-plugin/master/resources/blue-orange-comparison.png)
 
 You can customize any Less variable that `antd` uses in this way: just relace `@` with a `$`, e.g., `@info-color` becomes `$info-color`.
 
