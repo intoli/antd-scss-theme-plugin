@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prncc/antd-scss-theme-plugin.git"
+    "url": "https://github.com/intoli/antd-scss-theme-plugin.git"
   },
   "keywords": [
     "webpack",
@@ -25,12 +25,12 @@
     "sass-loader",
     "styles"
   ],
-  "author": "Andre Perunicic <andre@intoli.com>",
+  "author": "Intoli, LLC <contact@intoli.com>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/prncc/antd-scss-theme-plugin/issues"
+    "url": "https://github.com/intoli/antd-scss-theme-plugin/issues"
   },
-  "homepage": "https://github.com/prncc/antd-scss-theme-plugin",
+  "homepage": "https://github.com/intoli/antd-scss-theme-plugin",
   "files": [
     "build/dist"
   ],
