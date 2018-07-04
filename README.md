@@ -2,22 +2,22 @@
     <a targe="_blank" href="https://twitter.com/home?status=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20an%20SCSS%20theme%20file.%0A%0Ahttps%3A%2F%2Fgithub.com%2Fprncc%2Fantd-scss-theme-plugin">
         <img height="26px" src="https://simplesharebuttons.com/images/somacro/twitter.png"
             alt="Tweet"></a>
-    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/prncc/antd-scss-theme-plugin">
+    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//github.com/intoli/antd-scss-theme-plugin">
         <img height="26px" src="https://simplesharebuttons.com/images/somacro/facebook.png"
             alt="Share on Facebook"></a>
     <a target="_blank" href="http://reddit.com/submit?url=https%3A%2F%2Fgithub.com%2Fprncc%2Fantd-scss-theme-plugin&title=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20SCSS">
         <img height="26px" src="https://simplesharebuttons.com/images/somacro/reddit.png"
             alt="Share on Reddit"></a>
-    <a target="_blank" href="https://news.ycombinator.com/submitlink?u=https://github.com/prncc/antd-scss-theme-plugin&t=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20SCSS">
+    <a target="_blank" href="https://news.ycombinator.com/submitlink?u=https://github.com/intoli/antd-scss-theme-plugin&t=antd-scss-theme-plugin%20%E2%80%93%20A%20Webpack%20plugin%20for%20customizing%20Ant%20Design%20with%20SCSS">
         <img height="26px" src="resources/y-combinator.png"
             alt="Share on Hacker News"></a>
 </h1>
 
 <p align="left">
-    <a href="https://circleci.com/gh/prncc/antd-scss-theme-plugin/tree/master">
-        <img src="https://img.shields.io/circleci/project/github/prncc/antd-scss-theme-plugin/master.svg"
+    <a href="https://circleci.com/gh/intoli/antd-scss-theme-plugin/tree/master">
+        <img src="https://img.shields.io/circleci/project/github/intoli/antd-scss-theme-plugin/master.svg"
             alt="Build Status"></a>
-    <a href="https://github.com/prncc/antd-scss-theme-plugin/blob/master/LICENSE.md">
+    <a href="https://github.com/intoli/antd-scss-theme-plugin/blob/master/LICENSE.md">
         <img src="https://img.shields.io/npm/l/antd-scss-theme-plugin.svg"
             alt="License"></a>
     <a href="https://www.npmjs.com/package/antd-scss-theme-plugin">
@@ -190,7 +190,7 @@ $primary-color: #fe8019;
 
 then the interface will no longer be based off of the default blue `#1890ff`, but rather a louder orange `#fe8019`:
 
-![Effects of Changing Primary Color to #fe8019](https://raw.githubusercontent.com/prncc/antd-scss-theme-plugin/master/resources/blue-orange-comparison.png)
+![Effects of Changing Primary Color to #fe8019](https://raw.githubusercontent.com/intoli/antd-scss-theme-plugin/master/resources/blue-orange-comparison.png)
 
 You can customize any Less variable that `antd` uses in this way: just relace `@` with a `$`, e.g., `@info-color` becomes `$info-color`.
 
