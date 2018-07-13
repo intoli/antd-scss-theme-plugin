@@ -74,7 +74,7 @@ jobs:
           at: ~/antd-scss-theme-plugin
       - run:
           name: Write NPM Token to ~/.npmrc
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_DEPLOY_TOKEN" >> ~/.npmrc
       - run:
           name: Install dot-json package
           command: npm install dot-json
