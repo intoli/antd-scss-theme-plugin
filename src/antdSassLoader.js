@@ -8,6 +8,7 @@ import { getScssThemePath } from './loaderUtils';
 import {
   compileThemeVariables,
 } from './utils';
+import AntdScssThemePlugin from './index';
 
 
 /**
@@ -42,7 +43,7 @@ export const overloadSassLoaderOptions = async (options) => {
   const newOptions = { ...options };
   const scssThemePath = getScssThemePath(options);
 
-  const contents = await compileThemeVariables(scssThemePath);
+  const contents = await compileThemeVariables(scssThemePath, AntdScssThemePlugin.ENTRY_THEME_PATH);
   const extraImporter = themeImporter(scssThemePath, contents);
 
   let importer;
