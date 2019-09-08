@@ -1,7 +1,7 @@
 {
   "name": "antd-scss-theme-plugin",
   "description": "A Webpack plugin for customizing Ant Design with SCSS.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "build/dist/lib/index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production babel src --out-dir build/dist/lib",
