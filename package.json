@@ -35,7 +35,7 @@
     "build/dist"
   ],
   "dependencies": {
-    "less": "3.11.1",
+    "less": "^3.11.1",
     "loader-utils": "^1.1.0",
     "scss-to-json": "^2.0.0"
   },
