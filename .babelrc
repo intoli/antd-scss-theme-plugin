@@ -1,17 +1,18 @@
 {
   "plugins": [
-    "add-module-exports"
+    "add-module-exports",
+    "@babel/plugin-proposal-class-properties"
   ],
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        "useBuiltIns": true,
+        "useBuiltIns": "usage",
+        "corejs": "3",
         "targets": {
           "node": "6.9.0"
         }
       }
-    ],
-    "stage-2"
+    ]
   ]
 }
