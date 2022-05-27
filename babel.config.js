@@ -1,17 +1,15 @@
-{
+module.exports = {
   "plugins": [
     "add-module-exports"
   ],
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        "useBuiltIns": true,
         "targets": {
-          "node": "6.9.0"
+          "node": "10.13.0"
         }
       }
-    ],
-    "stage-2"
+    ]
   ]
 }

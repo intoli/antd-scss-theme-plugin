@@ -96,12 +96,7 @@ The [official documentation](https://ant.design/docs/react/customize-theme) expl
     {
       test: /\.less$/,
       use: [
-        {
-          loader: 'style-loader',
-          options: {
-            sourceMap: process.env.NODE_ENV !== 'production',
-          },
-        },
+        'style-loader',
         {
           loader: 'css-loader',
           options: {
@@ -131,11 +126,12 @@ First, initialize the plugin by passing your theme file's path to the plugin's c
 
 ```javascript
 import AntdScssThemePlugin from 'antd-scss-theme-plugin';
+import path from 'path';
 
 const webpackConfig =  {
   // ...
   plugins: [
-    new AntdScssThemePlugin('./theme.scss'),
+    new AntdScssThemePlugin(path.resolve('./theme.scss')),
   ],
 };
 ```

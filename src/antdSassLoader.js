@@ -1,14 +1,11 @@
 import path from 'path';
-
-import { getOptions, urlToRequest } from 'loader-utils';
+const fs = require('fs');
+import { propOr } from 'ramda';
+import { urlToRequest } from 'loader-utils';
 import sassLoader from 'sass-loader';
-import importsToResolve from 'sass-loader/dist/importsToResolve';
-
 import { getScssThemePath } from './loaderUtils';
-import {
-  compileThemeVariables,
-} from './utils';
-
+import { compileThemeVariables } from './utils';
+import { mergeRight } from 'ramda';
 
 /**
  * Utility returning a node-sass importer that provides access to all of antd's theme variables.
@@ -19,15 +16,23 @@ import {
  */
 export const themeImporter = (themeScssPath, contents) => (url, previousResolve, done) => {
   const request = urlToRequest(url);
-  const pathsToTry = importsToResolve(request);
+  let pathsToFile;
 
   const baseDirectory = path.dirname(previousResolve);
-  for (let i = 0; i < pathsToTry.length; i += 1) {
-    const potentialResolve = pathsToTry[i];
-    if (path.resolve(baseDirectory, potentialResolve) === themeScssPath) {
-      done({ contents });
-      return;
+
+  if (/\.(scss|sass)$/g.test(url)) {
+    pathsToFile = request;
+  } else {
+    if (fs.existsSync(path.resolve(baseDirectory, `${request}.scss`))) {
+      pathsToFile = request;
+    } else if (fs.existsSync(path.resolve(baseDirectory, `${request}.sass`))) {
+      pathsToFile = request;
     }
+  }
+
+  if (pathsToFile && path.resolve(baseDirectory, pathsToFile) === themeScssPath) {
+    done({ contents });
+    return;
   }
   done();
 };
@@ -36,7 +41,7 @@ export const themeImporter = (themeScssPath, contents) => (url, previousResolve,
 /**
  * Modify sass-loader's options so that all antd variables are imported from the SCSS theme file.
  * @param {Object} options - Options for sass-loader.
- * @return {Object} Options modified to includ a custom importer that handles the SCSS theme file.
+ * @return {Object} Options modified to include a custom importer that handles the SCSS theme file.
  */
 export const overloadSassLoaderOptions = async (options) => {
   const newOptions = { ...options };
@@ -44,19 +49,22 @@ export const overloadSassLoaderOptions = async (options) => {
 
   const contents = await compileThemeVariables(scssThemePath);
   const extraImporter = themeImporter(scssThemePath, contents);
+  const sassOptions = propOr({}, 'sassOptions', options);
 
   let importer;
-  if ('importer' in options) {
-    if (Array.isArray(options.importer)) {
-      importer = [...options.importer, extraImporter];
+
+  if ('importer' in sassOptions) {
+    if (Array.isArray(sassOptions.importer)) {
+      importer = [...sassOptions.importer, extraImporter];
     } else {
-      importer = [options.importer, extraImporter];
+      importer = [sassOptions.importer, extraImporter];
     }
   } else {
     importer = extraImporter;
   }
 
-  newOptions.importer = importer;
+  newOptions.sassOptions = {};
+  newOptions.sassOptions.importer = importer;
 
   return newOptions;
 };
@@ -71,19 +79,20 @@ export const overloadSassLoaderOptions = async (options) => {
 export default function antdSassLoader(...args) {
   const loaderContext = this;
   const callback = loaderContext.async();
-  const options = getOptions(loaderContext);
+  const options = this.getOptions();
 
-  const newLoaderContext = { ...loaderContext };
+  const newLoaderContext = {};
 
   overloadSassLoaderOptions(options)
     .then((newOptions) => {
       delete newOptions.scssThemePath; // eslint-disable-line no-param-reassign
       newLoaderContext.query = newOptions;
+      newLoaderContext.getOptions = () => newOptions;
 
       const scssThemePath = getScssThemePath(options);
-      newLoaderContext.addDependency(scssThemePath);
-
-      return sassLoader.call(newLoaderContext, ...args);
+      const newContext = mergeRight(this, newLoaderContext);
+      newContext.addDependency(scssThemePath);
+      return sassLoader.call(newContext, ...args);
     })
     .catch((error) => {
       // Remove unhelpful stack from error.
