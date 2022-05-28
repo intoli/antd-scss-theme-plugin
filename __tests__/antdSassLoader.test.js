@@ -13,16 +13,17 @@ import { compileThemeVariables } from '../src/utils';
 
 
 describe('themeImporter', () => {
-  it('produces an importer that allows importing compiled antd variables', async (done) => {
+  it('produces an importer that allows importing compiled antd variables', (done) => {
     const themePath = path.resolve(__dirname, 'data/theme.scss');
-    const contents = await compileThemeVariables(themePath);
-    sass.render({
-      file: path.resolve(__dirname, 'data/test.scss'),
-      importer: themeImporter(themePath, contents),
-    }, (error, result) => {
-      const compiledColor = result.css.toString().match(/background: (.*);/)[1];
-      expect(compiledColor).toBe('#faad14');
-      done();
+    compileThemeVariables(themePath).then((contents) => {
+      sass.render({
+        file: path.resolve(__dirname, 'data/test.scss'),
+        importer: themeImporter(themePath, contents),
+      }, (error, result) => {
+        const compiledColor = result.css.toString().match(/background: (.*);/)[1];
+        expect(compiledColor).toBe('#faad14');
+        done();
+      });
     });
   });
 });
@@ -36,7 +37,7 @@ describe('overloadSassLoaderOptions', () => {
     const overloadedOptions = await overloadSassLoaderOptions({
       scssThemePath,
     });
-    expect(typeof overloadedOptions.importer).toBe('function');
+    expect(typeof overloadedOptions.sassOptions.importer).toBe('function');
   });
 
   [
@@ -45,12 +46,13 @@ describe('overloadSassLoaderOptions', () => {
   ].forEach(([description, importer]) => {
     it(`adds an importer when given an ${description}`, async () => {
       const overloadedOptions = await overloadSassLoaderOptions({
-        importer,
+        sassOptions: {
+          importer
+        },
         scssThemePath,
       });
-
-      expect(overloadedOptions.importer.length).toBe(2);
-      overloadedOptions.importer.forEach(imp => expect(typeof imp).toBe('function'));
+      expect(overloadedOptions.sassOptions.importer.length).toBe(2);
+      overloadedOptions.sassOptions.importer.forEach(imp => expect(typeof imp).toBe('function'));
     });
   });
 
@@ -58,7 +60,7 @@ describe('overloadSassLoaderOptions', () => {
     // eslint-disable-next-line no-unused-vars
     const plugin = new AntdScssThemePlugin(scssThemePath);
     const overloadedOptions = await overloadSassLoaderOptions({});
-    expect(typeof overloadedOptions.importer).toBe('function');
+    expect(typeof overloadedOptions.sassOptions.importer).toBe('function');
   });
 
   it('throws error when no scss theme path is supplied', (done) => {
